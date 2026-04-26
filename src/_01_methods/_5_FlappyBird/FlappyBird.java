@@ -7,17 +7,25 @@ public class FlappyBird extends PApplet {
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
     PImage bird;
-    int birdX = 0;
+    int birdX = 50;
     float birdY = 200f;
     int upperY = 0;
-    int lowerY = 320;
+    int lowerY = 380;
     float birdYVelocity = -1;
-    float gravity = 0.15f;
+    float gravity = 0.7f;
     float pipeX = 400f;
-    int pipeGap = 120;
+    int pipeGap = 180;
     int upperPipeHeight = 200;
     int pipeWidth = 50;
     int lowerPipeTop = 280; 
+    int s = 0;
+    
+    boolean gameEnd() {
+    	if (birdY > 500 || intersectsPipes()) {
+    		System.exit(0);
+    		return true ;}
+    	 else { return false;}
+    }
     
     @Override
     public void settings() {
@@ -40,15 +48,22 @@ public class FlappyBird extends PApplet {
         fill(0,255,0);
         rect(pipeX,upperY,pipeWidth,upperPipeHeight);
         rect(pipeX,lowerY,pipeWidth,lowerPipeTop);
-        pipeX -=1.5f;
+        pipeX -=2.2f;
         }
         if (pipeX < 0) {
         teleportPipes();
         }
+        if (birdX + 50 == pipeX && birdY > upperPipeHeight && birdY < lowerPipeTop) {
+        	s++;
+        }
+        fill(0,0,0);
+        text("Your score is " + s, 700,20);
+        gameEnd();
+        
     }
 
     public void mousePressed() { 
-    	birdYVelocity= -2.5f;
+    	birdYVelocity= -7.5f;
     }
     
     public void teleportPipes() {
@@ -60,12 +75,15 @@ public class FlappyBird extends PApplet {
     }
     
     boolean intersectsPipes() { 
-        if (birdY < upperPipeHeight && birdX > pipeX && birdX < (pipeX+pipeWidth)){
+        if (birdY + 20 < upperPipeHeight && birdX + 50 > pipeX && birdX < (pipeX+pipeWidth)){
+        	System.out.println("upperPipH"+ upperPipeHeight+ " birdy"+ birdY);
            return true; }
-       else if (birdY>lowerPipeTop && birdX > pipeX && birdX < (pipeX+pipeWidth)) {
+       else if (birdY > lowerPipeTop && birdX + 50 > pipeX && birdX < (pipeX+pipeWidth)) {
+    	   System.out.println("lowerPipH" + lowerPipeTop + "birdy" + birdY);
            return true; }
-       else { return false; }
+       else { return false;}
 }
+    
 
   
     
