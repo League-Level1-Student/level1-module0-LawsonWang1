@@ -53,13 +53,13 @@ public class FlappyBird extends PApplet {
         if (pipeX < 0) {
         teleportPipes();
         }
-        if (birdX + 50 == pipeX && birdY > upperPipeHeight && birdY < lowerPipeTop) {
+        if (birdX + 50 >= pipeX ) {
         	s++;
         }
         fill(0,0,0);
-        text("Your score is " + s, 700,20);
+        text("Your score is " + s/45, 700,20);
         gameEnd();
-        
+      
     }
 
     public void mousePressed() { 
@@ -75,10 +75,10 @@ public class FlappyBird extends PApplet {
     }
     
     boolean intersectsPipes() { 
-        if (birdY + 20 < upperPipeHeight && birdX + 50 > pipeX && birdX < (pipeX+pipeWidth)){
+        if (birdY + 50 < upperPipeHeight && birdX + 50 > pipeX && birdX < (pipeX+pipeWidth)){
         	System.out.println("upperPipH"+ upperPipeHeight+ " birdy"+ birdY);
            return true; }
-       else if (birdY > lowerPipeTop && birdX + 50 > pipeX && birdX < (pipeX+pipeWidth)) {
+       else if (birdY + 50 > lowerY  && birdX + 50 > pipeX && birdX < (pipeX+pipeWidth)) {
     	   System.out.println("lowerPipH" + lowerPipeTop + "birdy" + birdY);
            return true; }
        else { return false;}
