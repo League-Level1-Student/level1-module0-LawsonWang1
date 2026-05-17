@@ -53,6 +53,7 @@ public class DrumKit implements MouseListener {
         // Add this MouseListener to drumLabel
         // *** Write the code in the mouseClicked() method below
     	drumLabel.addMouseListener(this);
+    	cymbalLabel.addMouseListener(this);
     	
         //  Set the layout of the panel to "new GridLayout()"
     	DKitPanel.setLayout(new GridLayout());
@@ -78,7 +79,11 @@ public class DrumKit implements MouseListener {
         // Ask your teacher for The League's login information.
     	if (labelClicked == drumLabel) {
     		playSound("drum.wav");
-    	}
+    		}
+    	if (labelClicked == cymbalLabel) {
+    		playSound("cymbal.wav");
+    		}
+    	
         //  If the user clicks on the drumImage...use the playSound method to play the drum sound.
         //  Test to see if it works before moving on.
 
