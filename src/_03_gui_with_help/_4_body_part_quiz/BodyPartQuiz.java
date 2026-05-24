@@ -44,11 +44,10 @@ public class BodyPartQuiz {
 		
 		// 3. Change the size of the window so that you can only see part of the
 		// image.
-		window.setSize(500, 500);
+		window.setSize(100, 100);
 
 		showNextImage();
 		startQuiz();
-
 	}
 
 	private void startQuiz() {
@@ -76,27 +75,27 @@ public class BodyPartQuiz {
 
 		// 8. .... repeat 4-7 for all your images.....
 		String guess2 = JOptionPane.showInputDialog("who is this?");
-		if (guess2.equalsIgnoreCase("Jack")) {
-			score++;
-			JOptionPane.showMessageDialog(null, "You are right, your score is " + score);
-		} else {
-			JOptionPane.showMessageDialog(null, "No you are wrong, the person is Jack. Your score is " + score);
-		}
-		showNextImage();
-		String guess3 = JOptionPane.showInputDialog("who is this?");
-		if (guess3.equalsIgnoreCase("Leonardo")) {
+		if (guess2.equalsIgnoreCase("Leonardo")) {
 			score++;
 			JOptionPane.showMessageDialog(null, "You are right, your score is " + score);
 		} else {
 			JOptionPane.showMessageDialog(null, "No you are wrong, the person is Leonardo. Your score is " + score);
 		}
 		showNextImage();
-		String guess4 = JOptionPane.showInputDialog("who is this?");
-		if (guess4.equalsIgnoreCase("Morgan")) {
+		String guess3 = JOptionPane.showInputDialog("who is this?");
+		if (guess3.equalsIgnoreCase("Morgan")) {
 			score++;
 			JOptionPane.showMessageDialog(null, "You are right, your score is " + score);
 		} else {
 			JOptionPane.showMessageDialog(null, "No you are wrong, the person is Morgan. Your score is " + score);
+		}
+		showNextImage();
+		String guess4 = JOptionPane.showInputDialog("who is this?");
+		if (guess4.equalsIgnoreCase("Jack")) {
+			score++;
+			JOptionPane.showMessageDialog(null, "You are right, your score is " + score);
+		} else {
+			JOptionPane.showMessageDialog(null, "No you are wrong, the person is Jack. Your score is " + score);
 		}
 		// 9. Show them their current score
 		JOptionPane.showMessageDialog(null, "Your total score is " + score + " /4" );
@@ -107,11 +106,11 @@ public class BodyPartQuiz {
 		panel.add(getNextImage());
 		window.add(panel);
 		window.setVisible(true);
-		System.out.println("show image");
+		
 	}
 
 	private JLabel loadImage(String fileName) {
-		System.out.println("Image");
+		
 
 		Icon icon = new ImageIcon(fileName);
 		JLabel label = new JLabel(icon);
@@ -123,11 +122,11 @@ public class BodyPartQuiz {
 	Iterator<JLabel> imageIterator;
 
 	private void initializeImageList() {
-		System.out.println("list");
+		
 		JLabel imageLabel = loadImage(firstImage);
 		imageList.add(imageLabel);
 
-		imageList.add( loadImage(secondImage));
+		imageList.add(loadImage(secondImage));
 	
 		imageList.add(loadImage(thirdImage));
 
@@ -136,7 +135,7 @@ public class BodyPartQuiz {
 	}
 
 	private JLabel getNextImage() {
-		System.out.println("next");
+		
 		if (imageIterator.hasNext()) {
 			return imageIterator.next();
 		}
